@@ -1,0 +1,8 @@
+﻿<maui:MauiWinUIApplication
+    x:Class="Both_TamasArpad_Proiect.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:Both_TamasArpad_Proiect.WinUI">
+
+</maui:MauiWinUIApplication>
