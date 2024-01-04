@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Both_TamasArpad_Proiect.ContactPage"
+             Title="Contact Page"
+             BackgroundColor="GhostWhite">
+    <StackLayout Padding="20">
+
+        <!-- Name Entry -->
+        <Label Text="Name" />
+        <Entry Placeholder="Enter your name" x:Name="NameEntry" />
+
+        <!-- Email Entry -->
+        <Label Text="Email" />
+        <Entry Placeholder="Enter your email" x:Name="EmailEntry" Keyboard="Email" />
+
+        <!-- Phone Entry -->
+        <Label Text="Phone" />
+        <Entry Placeholder="Enter your phone number" x:Name="PhoneEntry" Keyboard="Telephone" />
+
+        <!-- Message Entry -->
+        <Label Text="Message" />
+        <Editor Placeholder="Enter your message" x:Name="MessageEditor" HeightRequest="150"/>
+
+        <!-- Submit Button -->
+        <Button Text="Submit" Clicked="OnSubmitButtonClicked" />
+
+    </StackLayout>
+</ContentPage>

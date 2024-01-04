@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Both_TamasArpad_Proiect.AboutPage"
+             Title="About Page"
+             BackgroundColor="GhostWhite">
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Padding="20">
+
+        <Image Source="logo_no_background.png" Aspect="AspectFit" HeightRequest="200"/>
+        <Label Text="Version 1.0" FontSize="16" HorizontalOptions="Center" HeightRequest="50"/> 
+        <Label 
+            Text="          Started medling with 3d printers in 2021. First printer was a filament one, an Anycubic 4Max Pro, bought second hand." 
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            FontSize="16"
+            LineBreakMode="WordWrap"/>
+        <Label 
+            Text="          Fastly transitioned to a resin printer, an Anycubic Photon Mono X 6K, for far superior, crisper details." 
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            HeightRequest="100"
+            FontSize="16"
+            LineBreakMode="WordWrap"/>
+        <Label Text="For inquiries contact me at: " HorizontalOptions="Center"/>
+        <Label Text="both.tamas.arpad@gmail.com" FontAttributes="Bold" HorizontalOptions="Center"/>
+        <Label Text="Visit my website: " HorizontalOptions="Center"/>
+        <Label Text="www.creativ3details.com" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+    </StackLayout>
+</ContentPage>
