@@ -48,44 +48,57 @@ public partial class CreationPage : ContentPage
         }
     }
 
-
-
-    // Your data model
-    private Figurine _creationData;
-
-    public CreationPage(Figurine creationData)
-    {
-        InitializeComponent();
-
-        _creationData = creationData;
-
-        // Display creation details
-        UpdateCreationDetails();
-    }
-    private void UpdateCreationDetails()
-    {
-        // Update labels with creation details
-        // For example:
-        // titleLabel.Text = _creationData.Title;
-        // descriptionLabel.Text = _creationData.Description;
-        // photoLocationLabel.Text = _creationData.PhotoLocation;
-        // likesLabel.Text = $"Likes: {_creationData.LikeCounter}";
-        // dislikesLabel.Text = $"Dislikes: {_creationData.DislikeCounter}";
-    }
-
     private void OnLikeClicked(object sender, EventArgs e)
     {
-        // Update Like count in the database
-        _creationData.LikeCounter++;
-        UpdateCreationDetails();
-        // Save to database or perform necessary operations
-    }
+        // Get the Button from the sender
+        var button = (Button)sender;
 
+        // Get the Figurine associated with the Button
+        var figurine = (Figurine)button.BindingContext;
+
+        // Update Like count in the database
+        figurine.LikeCounter++;
+
+        // Update the ObservableCollection
+        Figurines[Figurines.IndexOf(figurine)] = figurine;
+
+        // Save to database or perform necessary operations
+        App.Database.SaveFigurineAsync(figurine);
+    }
     private void OnDislikeClicked(object sender, EventArgs e)
     {
+        // Get the Button from the sender
+        var button = (Button)sender;
+
+        // Get the Figurine associated with the Button
+        var figurine = (Figurine)button.BindingContext;
+
         // Update Dislike count in the database
-        _creationData.DislikeCounter++;
-        UpdateCreationDetails();
+        figurine.DislikeCounter++;
+
+        // Update the ObservableCollection
+        Figurines[Figurines.IndexOf(figurine)] = figurine;
+
         // Save to database or perform necessary operations
+        App.Database.SaveFigurineAsync(figurine);
+    }
+    private async void OnDeleteClicked(object sender, EventArgs e)
+    {
+        // Get the Button from the sender
+        var button = (Button)sender;
+
+        // Get the Figurine associated with the Button
+        var figurine = (Figurine)button.BindingContext;
+
+        // Remove the figurine from the ObservableCollection
+        Figurines.Remove(figurine);
+
+        // Remove the figurine from the database
+        await App.Database.DeleteFigurineAsync(figurine);
+
+        // Set the ItemsSource of the ListView to null and then reset it to Figurines
+        // This ensures that the ListView updates properly
+        listView.ItemsSource = null;
+        listView.ItemsSource = Figurines;
     }
 }

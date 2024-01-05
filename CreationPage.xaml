@@ -14,10 +14,8 @@
     <StackLayout Padding="20">
 
         <ListView x:Name="listView" ItemSelected="OnListViewItemSelected">
-            <!-- Define your ItemTemplate here -->
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!-- Use a ViewCell to customize the appearance -->
                     <ViewCell>
                         <StackLayout>
                             <Label Text="Title" FontAttributes="Bold" HorizontalOptions="Center"/>
@@ -36,7 +34,9 @@
                                 <Button Text="Dislike" FontAttributes="Bold" Clicked="OnDislikeClicked"/>
                                 <Label Text="{Binding DislikeCounter}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="22"/>
                             </StackLayout>
-                            <!-- Add labels for other columns as needed -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                                <Button Text="Delete" FontAttributes="Bold" Clicked="OnDeleteClicked"/>
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

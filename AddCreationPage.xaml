@@ -13,10 +13,6 @@
         <Label Text="Description" />
         <Entry Placeholder="Enter description" x:Name="DescriptionEntry" />
 
-        <!-- Photo Location Entry -->
-        <Label Text="Photo Location" />
-        <Entry Placeholder="Enter photo location" x:Name="PhotoLocationEntry" />
-
         <!-- Save Button -->
         <Button Text="Save"
                 Clicked="OnFigurineAdd" 

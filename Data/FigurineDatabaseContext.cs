@@ -41,5 +41,10 @@ namespace Both_TamasArpad_Proiect.Data
         {
             return _database.DeleteAsync(fig);
         }
+
+        public Task<int> DeleteFigurineByIdAsync(int id)
+        {
+            return _database.Table<Figurine>().DeleteAsync(f => f.ID == id);
+        }
     }
 }
