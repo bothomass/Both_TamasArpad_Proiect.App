@@ -13,8 +13,12 @@
             ContentTemplate="{DataTemplate local:MainPage}"
             />
         <ShellContent
-            Title="Creation"
+            Title="Figurine"
             ContentTemplate="{DataTemplate local:CreationPage}"
+            />
+        <ShellContent
+            Title="Add Figurine"
+            ContentTemplate="{DataTemplate local:AddCreationPage}"
             />
         <ShellContent
             Title="About"

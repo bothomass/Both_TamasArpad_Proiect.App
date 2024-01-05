@@ -26,20 +26,20 @@ namespace Both_TamasArpad_Proiect.Data
                 .Where(i => i.ID == id)
                 .FirstOrDefaultAsync();
         }
-        public Task<int> SaveFigurineAsync(Figurine figlist)
+        public Task<int> SaveFigurineAsync(Figurine fig)
         {
-            if (figlist.ID != 0)
+            if (fig.ID != 0)
             {
-                return _database.UpdateAsync(figlist);
+                return _database.UpdateAsync(fig);
             }
             else
             {
-                return _database.InsertAsync(figlist);
+                return _database.InsertAsync(fig);
             }
         }
-        public Task<int> DeleteFigurineAsync(Figurine figlist)
+        public Task<int> DeleteFigurineAsync(Figurine fig)
         {
-            return _database.DeleteAsync(figlist);
+            return _database.DeleteAsync(fig);
         }
     }
 }
