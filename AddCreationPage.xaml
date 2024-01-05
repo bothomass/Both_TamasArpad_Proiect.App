@@ -3,20 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Both_TamasArpad_Proiect.AddCreationPage"
              Title="Add Creation">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Shopping List"
-                     Clicked="OnFigurineAdd" 
-                     />
-    </ContentPage.ToolbarItems>
-    <ListView x:Name="listView"
-              Margin="20"
-              ItemSelected="OnListViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Description}"
-                          Detail="{Binding Date}"
-                          />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout Padding="20">
+
+        <!-- Title Entry -->
+        <Label Text="Title" />
+        <Entry Placeholder="Enter title" x:Name="TitleEntry" />
+
+        <!-- Description Entry -->
+        <Label Text="Description" />
+        <Entry Placeholder="Enter description" x:Name="DescriptionEntry" />
+
+        <!-- Photo Location Entry -->
+        <Label Text="Photo Location" />
+        <Entry Placeholder="Enter photo location" x:Name="PhotoLocationEntry" />
+
+        <!-- Save Button -->
+        <Button Text="Save"
+                Clicked="OnFigurineAdd" 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="CenterAndExpand"/>
+
+    </StackLayout>
 </ContentPage>

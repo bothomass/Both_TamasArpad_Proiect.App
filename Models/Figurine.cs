@@ -24,19 +24,19 @@ namespace Both_TamasArpad_Proiect.Models
         public DateTime DateAdded { get; set; } = DateTime.Now;
 
 
-        public Figurine Clone() => MemberwiseClone() as Figurine;
-
-        public (bool IsValid, string? ErrorMessage) Validate()
-        {
-            if (string.IsNullOrWhiteSpace(Title))
-            {
-                return (false, $"{nameof(Title)} is required.");
-            }
-            //else if (Price <= 0)
-            //{
-            //    return (false, $"{nameof(Price)} should be greater than 0.");
-            //}
-            return (true, null);
-        }
+        //public Figurine Clone() => MemberwiseClone() as Figurine;
+        //
+        //public (bool IsValid, string? ErrorMessage) Validate()
+        //{
+        //    if (string.IsNullOrWhiteSpace(Title))
+        //    {
+        //        return (false, $"{nameof(Title)} is required.");
+        //    }
+        //    //else if (Price <= 0)
+        //    //{
+        //    //    return (false, $"{nameof(Price)} should be greater than 0.");
+        //    //}
+        //    return (true, null);
+        //}
     }
 }

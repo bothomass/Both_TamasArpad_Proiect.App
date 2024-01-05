@@ -1,14 +1,55 @@
 using Both_TamasArpad_Proiect.Models;
 using Microsoft.Maui.Controls;
+using System.Collections.ObjectModel;
 
 namespace Both_TamasArpad_Proiect;
 
 public partial class CreationPage : ContentPage
 {
+    public ObservableCollection<Figurine> Figurines { get; set; }
     public CreationPage()
     {
         InitializeComponent();
+
+        // Initialize the ObservableCollection
+        Figurines = new ObservableCollection<Figurine>();
+
+        // Set the binding context to this instance
+        BindingContext = this;
+
+        // Set the ItemsSource of the ListView to the Figurines collection
+        listView.ItemsSource = Figurines;
     }
+
+    private void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        if (e.SelectedItem != null)
+        {
+            Figurines = new ObservableCollection<Figurine>();
+
+            // Set the binding context to this instance
+            BindingContext = this;
+
+            // Set the ItemsSource of the ListView to the Figurines collection
+            listView.ItemsSource = Figurines;
+        }
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        // Load figurines from the database and update the ObservableCollection
+        var figurines = await App.Database.GetFigurineAsync();
+        Figurines.Clear(); // Clear existing items
+        foreach (var figurine in figurines)
+        {
+            Figurines.Add(figurine);
+        }
+    }
+
+
+
     // Your data model
     private Figurine _creationData;
 

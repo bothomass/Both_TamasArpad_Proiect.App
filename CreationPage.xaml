@@ -2,27 +2,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Both_TamasArpad_Proiect.CreationPage"
+             xmlns:converters="clr-namespace:Both_TamasArpad_Proiect.Converters"
              Title="Creation">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImagePathConverter x:Key="ImagePathConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <StackLayout Padding="20">
 
-        <!-- Display existing creation details here -->
-        <Label Text="Creation Title" FontSize="Title" />
-        <Label Text="Creation Description" FontSize="Subtitle" />
-        <Label Text="Photo Location" />
-        <Label Text="Likes: 10" x:Name="LikesLabel" />
-        <Label Text="Dislikes: 5" x:Name="DislikesLabel" />
+        <ListView x:Name="listView" ItemSelected="OnListViewItemSelected">
+            <!-- Define your ItemTemplate here -->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!-- Use a ViewCell to customize the appearance -->
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="Title" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Title}" HorizontalOptions="Center"/>
 
-        <!-- Like Button -->
-        <Button Text="Like"
-                Clicked="OnLikeClicked" 
-                HorizontalOptions="FillAndExpand" 
-                VerticalOptions="CenterAndExpand"/>
+                            <Label Text="Description" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Description}" HorizontalOptions="Center"/>
 
-        <!-- Dislike Button -->
-        <Button Text="Dislike"
-                Clicked="OnDislikeClicked" 
-                HorizontalOptions="FillAndExpand" 
-                VerticalOptions="CenterAndExpand"/>
+                            <Label Text="Image" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Image Source="{Binding Title, Converter={StaticResource ImagePathConverter}}" HeightRequest="450" WidthRequest="300" Aspect="AspectFill"/>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                                <Button Text="Like" FontAttributes="Bold" Clicked="OnLikeClicked"/>
+                                <Label Text="{Binding LikeCounter}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="22"/>
+
+                                <Button Text="Dislike" FontAttributes="Bold" Clicked="OnDislikeClicked"/>
+                                <Label Text="{Binding DislikeCounter}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="22"/>
+                            </StackLayout>
+                            <!-- Add labels for other columns as needed -->
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </StackLayout>
 </ContentPage>
