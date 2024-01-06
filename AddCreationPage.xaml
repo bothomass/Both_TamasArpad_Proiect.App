@@ -2,22 +2,23 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Both_TamasArpad_Proiect.AddCreationPage"
-             Title="Add Creation">
+             Title="Add Creation"
+             BackgroundColor="GhostWhite">
     <StackLayout Padding="20">
 
-        <!-- Title Entry -->
-        <Label Text="Title" />
-        <Entry Placeholder="Enter title" x:Name="TitleEntry" />
+        <Label Text="Figurine name" HorizontalOptions="Center"/>
+        <Label Text="" HeightRequest="5"/>
+        <Entry Placeholder="Enter figurine name" x:Name="TitleEntry" WidthRequest="300"/>
+        <Label Text="" HeightRequest="20"/>
 
-        <!-- Description Entry -->
-        <Label Text="Description" />
-        <Entry Placeholder="Enter description" x:Name="DescriptionEntry" />
-
-        <!-- Save Button -->
-        <Button Text="Save"
+        <Label Text="Description" HorizontalOptions="Center"/>
+        <Label Text="" HeightRequest="5"/>
+        <Entry Placeholder="Enter description" x:Name="DescriptionEntry" WidthRequest="300" HeightRequest="100"/>
+        <Label Text="" HeightRequest="20"/>
+        
+        <Button Text="Add"
                 Clicked="OnFigurineAdd" 
-                HorizontalOptions="FillAndExpand" 
-                VerticalOptions="CenterAndExpand"/>
+                WidthRequest="300"/>
 
     </StackLayout>
 </ContentPage>

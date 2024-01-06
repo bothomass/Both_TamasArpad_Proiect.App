@@ -16,9 +16,7 @@ namespace Both_TamasArpad_Proiect
         {
             try
             {
-                // Print the database path to the console
                 string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Figurine.db3");
-                Console.WriteLine($"Database Path: {dbPath}");
 
                 Figurine newFigurine = new Figurine
                 {
@@ -26,23 +24,19 @@ namespace Both_TamasArpad_Proiect
                     Description = DescriptionEntry.Text
                 };
 
-                // Initialize SQLite database
                 var database = new SQLiteAsyncConnection(dbPath);
 
-                // Save the newFigurine to the database
                 await database.InsertAsync(newFigurine);
 
-                // Display an alert with a message
                 await DisplayAlert("Success", "Figurine added successfully", "OK");
 
-                // Navigate back to the previous page
+                TitleEntry.Text = string.Empty;
+                DescriptionEntry.Text = string.Empty;
+
                 await Navigation.PopAsync();
             }
             catch (Exception ex)
             {
-                // Log or display the exception details
-                Console.WriteLine($"Exception: {ex.Message}");
-                Console.WriteLine($"StackTrace: {ex.StackTrace}");
                 await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
             }
         }

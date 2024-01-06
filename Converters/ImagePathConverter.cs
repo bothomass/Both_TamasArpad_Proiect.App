@@ -10,7 +10,6 @@ namespace Both_TamasArpad_Proiect.Converters
         {
             if (value is string title)
             {
-                // Replace spaces with underscores and append .jpg
                 return $"{title.Replace(" ", "_")}.jpg";
             }
 

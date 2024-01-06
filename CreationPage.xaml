@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Both_TamasArpad_Proiect.CreationPage"
              xmlns:converters="clr-namespace:Both_TamasArpad_Proiect.Converters"
-             Title="Creation">
+             Title="Creation"
+             BackgroundColor="GhostWhite">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -13,30 +14,39 @@
 
     <StackLayout Padding="20">
 
-        <ListView x:Name="listView" ItemSelected="OnListViewItemSelected">
+        <ListView x:Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="Title" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="" HeightRequest="20"/>
+                            <Label Text="Figurine name:" FontAttributes="Bold" HorizontalOptions="Center"/>
                             <Label Text="{Binding Title}" HorizontalOptions="Center"/>
 
-                            <Label Text="Description" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Description:" FontAttributes="Bold" HorizontalOptions="Center"/>
                             <Label Text="{Binding Description}" HorizontalOptions="Center"/>
 
-                            <Label Text="Image" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Figurine added on:" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="{Binding DateAdded}" HorizontalOptions="Center"/>
+                            <Label Text="" HeightRequest="20"/>
+
                             <Image Source="{Binding Title, Converter={StaticResource ImagePathConverter}}" HeightRequest="450" WidthRequest="300" Aspect="AspectFill"/>
 
+                            <Label Text="" HeightRequest="20"/>
+                            
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
-                                <Button Text="Like" FontAttributes="Bold" Clicked="OnLikeClicked"/>
+                                <Button Text="Like" FontAttributes="Bold" Clicked="OnLikeClicked" BackgroundColor="Green"/>
                                 <Label Text="{Binding LikeCounter}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="22"/>
 
-                                <Button Text="Dislike" FontAttributes="Bold" Clicked="OnDislikeClicked"/>
+                                <Button Text="Dislike" FontAttributes="Bold" Clicked="OnDislikeClicked" BackgroundColor="Red"/>
                                 <Label Text="{Binding DislikeCounter}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="22"/>
                             </StackLayout>
+                            <Label Text="" HeightRequest="20"/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
-                                <Button Text="Delete" FontAttributes="Bold" Clicked="OnDeleteClicked"/>
+                                <Button Text="Delete" FontAttributes="Bold" Clicked="OnDeleteClicked" 
+                                        WidthRequest="190" HeightRequest="40" BackgroundColor="DarkRed"/>
                             </StackLayout>
+                            <Label Text="" HeightRequest="20"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

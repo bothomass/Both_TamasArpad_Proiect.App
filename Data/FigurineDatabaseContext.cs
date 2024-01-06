@@ -20,12 +20,6 @@ namespace Both_TamasArpad_Proiect.Data
         {
             return _database.Table<Figurine>().ToListAsync();
         }
-        public Task<Figurine> GetFigurineAsync(int id)
-        {
-            return _database.Table<Figurine>()
-                .Where(i => i.ID == id)
-                .FirstOrDefaultAsync();
-        }
         public Task<int> SaveFigurineAsync(Figurine fig)
         {
             if (fig.ID != 0)
@@ -40,11 +34,6 @@ namespace Both_TamasArpad_Proiect.Data
         public Task<int> DeleteFigurineAsync(Figurine fig)
         {
             return _database.DeleteAsync(fig);
-        }
-
-        public Task<int> DeleteFigurineByIdAsync(int id)
-        {
-            return _database.Table<Figurine>().DeleteAsync(f => f.ID == id);
         }
     }
 }

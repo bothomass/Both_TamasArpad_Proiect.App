@@ -20,8 +20,6 @@ namespace Both_TamasArpad_Proiect.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string PhotoLocation { get; set; }
-        //public int LikeCounter { get; set; } = 0;
-        //public int DislikeCounter { get; set; } = 0;
         public DateTime DateAdded { get; set; } = DateTime.Now;
 
         private int _likeCounter;

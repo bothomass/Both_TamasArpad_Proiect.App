@@ -6,24 +6,27 @@
              BackgroundColor="GhostWhite">
     <StackLayout Padding="20">
 
-        <!-- Name Entry -->
-        <Label Text="Name" />
-        <Entry Placeholder="Enter your name" x:Name="NameEntry" />
+        <Label Text="Name" HorizontalOptions="Center"/>
+        <Label Text="" HeightRequest="5"/>
+        <Entry Placeholder="Enter your name" x:Name="NameEntry" HorizontalOptions="Center" WidthRequest="300"/>
+        <Label Text="" HeightRequest="20"/>
 
-        <!-- Email Entry -->
-        <Label Text="Email" />
-        <Entry Placeholder="Enter your email" x:Name="EmailEntry" Keyboard="Email" />
+        <Label Text="Email" HorizontalOptions="Center"/>
+        <Label Text="" HeightRequest="5"/>
+        <Entry Placeholder="Enter your email" x:Name="EmailEntry" Keyboard="Email" HorizontalOptions="Center" WidthRequest="300"/>
+        <Label Text="" HeightRequest="20"/>
 
-        <!-- Phone Entry -->
-        <Label Text="Phone" />
-        <Entry Placeholder="Enter your phone number" x:Name="PhoneEntry" Keyboard="Telephone" />
+        <Label Text="Phone" HorizontalOptions="Center"/>
+        <Label Text="" HeightRequest="5"/>
+        <Entry Placeholder="Enter your phone number" x:Name="PhoneEntry" Keyboard="Telephone" HorizontalOptions="Center" WidthRequest="300"/>
+        <Label Text="" HeightRequest="20"/>
 
-        <!-- Message Entry -->
-        <Label Text="Message" />
-        <Editor Placeholder="Enter your message" x:Name="MessageEditor" HeightRequest="150"/>
+        <Label Text="Message" HorizontalOptions="Center"/>
+        <Label Text="" HeightRequest="5"/>
+        <Editor Placeholder="Enter your message" x:Name="MessageEditor" HorizontalOptions="Center" WidthRequest="300" HeightRequest="200"/>
+        <Label Text="" HeightRequest="20"/>
 
-        <!-- Submit Button -->
-        <Button Text="Submit" Clicked="OnSubmitButtonClicked" />
+        <Button Text="Submit" Clicked="OnSubmitButtonClicked" HorizontalOptions="Center" WidthRequest="300"/>
 
     </StackLayout>
 </ContentPage>

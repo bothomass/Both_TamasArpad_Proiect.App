@@ -12,7 +12,10 @@ public partial class App : Application
         get 
         { if (database == null) 
             { 
-                database = new FigurineDatabaseContext(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Figurine.db3")); 
+                database = new FigurineDatabaseContext(Path
+                    .Combine(Environment
+                    .GetFolderPath(Environment
+                    .SpecialFolder.LocalApplicationData), "Figurine.db3")); 
             } 
             return database; 
         } 
