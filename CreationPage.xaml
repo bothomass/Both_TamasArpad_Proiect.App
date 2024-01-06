@@ -14,7 +14,7 @@
 
     <StackLayout Padding="20">
 
-        <ListView x:Name="listView">
+        <ListView x:Name="listView" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -33,7 +33,7 @@
                             <Image Source="{Binding Title, Converter={StaticResource ImagePathConverter}}" HeightRequest="450" WidthRequest="300" Aspect="AspectFill"/>
 
                             <Label Text="" HeightRequest="20"/>
-                            
+
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
                                 <Button Text="Like" FontAttributes="Bold" Clicked="OnLikeClicked" BackgroundColor="Green"/>
                                 <Label Text="{Binding LikeCounter}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="22"/>
