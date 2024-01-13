@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Both_TamasArpad_Proiect.AddCreatorPage"
+             Title="Add Creator"
+             BackgroundColor="GhostWhite">
+
+    <StackLayout Padding="20">
+        <Label Text="Creator name" HorizontalOptions="Center"/>
+        <Picker Title="Select Creator"
+                x:Name="CreatorPicker"
+                ItemsSource="{Binding Creators}"
+                ItemDisplayBinding="{Binding FullName}"
+                SelectedIndexChanged="OnCreatorPickerSelectedIndexChanged"
+                HorizontalOptions="Center"/>
+
+        <Label Text="First Name" HorizontalOptions="Center"/>
+        <Label Text="" HeightRequest="5"/>
+        <Entry Placeholder="Enter first name" x:Name="FirstNameEntry" WidthRequest="300"/>
+        <Label Text="" HeightRequest="20"/>
+
+        <Label Text="Last Name" HorizontalOptions="Center"/>
+        <Label Text="" HeightRequest="5"/>
+        <Entry Placeholder="Enter last name" x:Name="LastNameEntry" WidthRequest="300"/>
+        <Label Text="" HeightRequest="20"/>
+
+        <Label Text="" HeightRequest="10"/>
+
+        <Button Text="Add"
+                Clicked="OnCreatorAdd"
+                WidthRequest="300"
+                IsEnabled="{Binding IsAddEnabled}"
+                BackgroundColor="DarkGreen"/>
+
+        <Label Text="" HeightRequest="10"/>
+
+        <Button Text="Update"
+                Clicked="OnCreatorUpdate"
+                WidthRequest="300"
+                IsEnabled="{Binding IsUpdateEnabled}"
+                BackgroundColor="DarkOrange"/>
+
+        <Label Text="" HeightRequest="10"/>
+
+        <Button Text="Delete"
+                Clicked="OnCreatorDelete"
+                WidthRequest="300"
+                IsEnabled="{Binding IsDeleteEnabled}"
+                BackgroundColor="DarkRed"/>
+    </StackLayout>
+</ContentPage>

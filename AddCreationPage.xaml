@@ -6,6 +6,14 @@
              BackgroundColor="GhostWhite">
     <StackLayout Padding="20">
 
+        <Label Text="Creator name" HorizontalOptions="Center"/>
+        <Picker Title="Select Creator"
+                x:Name="CreatorPicker"
+                ItemsSource="{Binding Creators}"
+                ItemDisplayBinding="{Binding FullName}"
+                SelectedIndexChanged="OnCreatorPickerSelectedIndexChanged"
+                HorizontalOptions="Center"/>
+
         <Label Text="Figurine name" HorizontalOptions="Center"/>
         <Label Text="" HeightRequest="5"/>
         <Entry Placeholder="Enter figurine name" x:Name="TitleEntry" WidthRequest="300"/>
@@ -18,6 +26,12 @@
         
         <Button Text="Add"
                 Clicked="OnFigurineAdd" 
+                WidthRequest="300"/>
+
+        <Label Text="" HeightRequest="10"/>
+
+        <Button Text="Creator Management"
+                Clicked="OnNavigateToAddCreatorPage"
                 WidthRequest="300"/>
 
     </StackLayout>

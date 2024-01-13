@@ -20,6 +20,9 @@
                     <ViewCell>
                         <StackLayout>
                             <Label Text="" HeightRequest="20"/>
+                            <Label Text="Creator:" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Creator.FullName}" HorizontalOptions="Center"/>
+                            
                             <Label Text="Figurine name:" FontAttributes="Bold" HorizontalOptions="Center"/>
                             <Label Text="{Binding Title}" HorizontalOptions="Center"/>
 

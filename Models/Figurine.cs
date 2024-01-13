@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
+using ForeignKeyAttribute = SQLiteNetExtensions.Attributes.ForeignKeyAttribute;
 using Both_TamasArpad_Proiect.Data;
 using System.Diagnostics;
 using System.Xml.Linq;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Both_TamasArpad_Proiect.Models
 {
@@ -49,6 +52,15 @@ namespace Both_TamasArpad_Proiect.Models
                 }
             }
         }
+
+        // New property for referencing Creator
+        [ForeignKey(typeof(Creator))]
+        public int CreatorId { get; set; }
+
+        // Reference to the associated Creator
+        [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]
+        public Creator Creator { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
