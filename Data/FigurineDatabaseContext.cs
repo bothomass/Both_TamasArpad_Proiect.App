@@ -19,6 +19,7 @@ namespace Both_TamasArpad_Proiect.Data
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Figurine>().Wait();
             _database.CreateTableAsync<Creator>().Wait();
+            _database.CreateTableAsync<Both_TamasArpad_Proiect.Models.Contact>().Wait();
         }
         public Task<List<Figurine>> GetFigurineAsync()
         {
@@ -59,6 +60,17 @@ namespace Both_TamasArpad_Proiect.Data
         public Task<int> DeleteCreatorAsync(Creator creator)
         {
             return _database.DeleteAsync(creator);
+        }
+        public Task<int> SaveContactAsync(Both_TamasArpad_Proiect.Models.Contact contact)
+        {
+            if (contact.Id != 0)
+            {
+                return _database.UpdateAsync(contact);
+            }
+            else
+            {
+                return _database.InsertAsync(contact);
+            }
         }
     }
 }
