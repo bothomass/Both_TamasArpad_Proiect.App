@@ -19,6 +19,7 @@ namespace Both_TamasArpad_Proiect.Data
             _database.CreateTableAsync<Figurine>().Wait();
             _database.CreateTableAsync<Creator>().Wait();
             _database.CreateTableAsync<Both_TamasArpad_Proiect.Models.Contact>().Wait();
+            _database.CreateTableAsync<LikeDislikeCounter>().Wait();
         }
         public Task<List<Figurine>> GetFigurineAsync()
         {
