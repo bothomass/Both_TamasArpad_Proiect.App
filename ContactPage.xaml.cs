@@ -1,4 +1,5 @@
 using Both_TamasArpad_Proiect.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Both_TamasArpad_Proiect;
 
@@ -19,9 +20,20 @@ public partial class ContactPage : ContentPage
             Message = MessageEditor.Text
         };
 
+        var validationContext = new ValidationContext(contact, serviceProvider: null, items: null);
+        var validationResults = new List<ValidationResult>();
+        bool isValid = Validator.TryValidateObject(contact, validationContext, validationResults, validateAllProperties: true);
+
+        if (!isValid)
+        {
+            string errorMessage = string.Join("\n", validationResults.Select(result => result.ErrorMessage));
+            await DisplayAlert("Validation Error", errorMessage, "OK");
+            return;
+        }
+
         await App.Database.SaveContactAsync(contact);
 
-        // Pe langa salvarea intr-o tabela, sa trimita si un e-mail cu aceste date
+        // Pe langa salvarea intr-o tabela, sa trimita si un e-mail cu aceste date (ptr. viitor)
 
         await DisplayAlert("Success", "Message has been sent", "OK");
 
@@ -32,4 +44,5 @@ public partial class ContactPage : ContentPage
 
         await Navigation.PopAsync();
     }
+
 }

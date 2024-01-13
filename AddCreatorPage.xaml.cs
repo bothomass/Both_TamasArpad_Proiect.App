@@ -5,12 +5,13 @@ using System;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Both_TamasArpad_Proiect
 {
     public partial class AddCreatorPage : ContentPage, INotifyPropertyChanged
     {
-        private Creator selectedCreator;  // Add this line to declare the selectedCreator variable
+        private Creator selectedCreator;
         private bool isAddEnabled = true;
         private bool isUpdateEnabled;
         private bool isDeleteEnabled;
@@ -46,7 +47,7 @@ namespace Both_TamasArpad_Proiect
             var allCreators = await App.Database.GetCreatorsAsync();
             foreach (var creator in allCreators)
             {
-                // Check if the creator with the same Id already exists in the collection
+
                 if (!creators.Any(c => c.Id == creator.Id))
                 {
                     creators.Add(creator);
@@ -104,11 +105,11 @@ namespace Both_TamasArpad_Proiect
             {
                 selectedCreator = (Creator)picker.SelectedItem;
 
-                // Enable/disable update and delete buttons
+
                 IsUpdateEnabled = true;
                 IsDeleteEnabled = true;
-                IsAddEnabled = false;  // Disable the Add button when a Creator is selected
-                                       // Populate FirstNameEntry and LastNameEntry with selected Creator's values
+                IsAddEnabled = false; 
+                                       
                 FirstNameEntry.Text = selectedCreator.FirstName;
                 LastNameEntry.Text = selectedCreator.LastName;
             }
@@ -116,11 +117,11 @@ namespace Both_TamasArpad_Proiect
             {
                 selectedCreator = null;
 
-                // Disable update and delete buttons
+
                 IsUpdateEnabled = false;
                 IsDeleteEnabled = false;
-                IsAddEnabled = true;  // Enable the Add button when no Creator is selected
-                                      // Clear FirstNameEntry and LastNameEntry when no Creator is selected
+                IsAddEnabled = true;  
+                               
                 FirstNameEntry.Text = string.Empty;
                 LastNameEntry.Text = string.Empty;
             }
@@ -138,6 +139,17 @@ namespace Both_TamasArpad_Proiect
                     FirstName = FirstNameEntry.Text,
                     LastName = LastNameEntry.Text
                 };
+
+                var validationContext = new ValidationContext(newCreator, serviceProvider: null, items: null);
+                var validationResults = new List<ValidationResult>();
+                bool isValid = Validator.TryValidateObject(newCreator, validationContext, validationResults, validateAllProperties: true);
+
+                if (!isValid)
+                {
+                    string errorMessage = string.Join("\n", validationResults.Select(result => result.ErrorMessage));
+                    await DisplayAlert("Validation Error", errorMessage, "OK");
+                    return;
+                }
 
                 var database = new SQLiteAsyncConnection(dbPath);
 
@@ -163,13 +175,23 @@ namespace Both_TamasArpad_Proiect
                 selectedCreator.FirstName = FirstNameEntry.Text;
                 selectedCreator.LastName = LastNameEntry.Text;
 
+                var validationContext = new ValidationContext(selectedCreator, serviceProvider: null, items: null);
+                var validationResults = new List<ValidationResult>();
+                bool isValid = Validator.TryValidateObject(selectedCreator, validationContext, validationResults, validateAllProperties: true);
+
+                if (!isValid)
+                {
+                    string errorMessage = string.Join("\n", validationResults.Select(result => result.ErrorMessage));
+                    await DisplayAlert("Validation Error", errorMessage, "OK");
+                    return;
+                }
+
                 await App.Database.SaveCreatorAsync(selectedCreator);
 
                 await DisplayAlert("Success", "Creator updated successfully", "OK");
 
                 FirstNameEntry.Text = string.Empty;
                 LastNameEntry.Text = string.Empty;
-
             }
         }
 
@@ -191,7 +213,6 @@ namespace Both_TamasArpad_Proiect
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-            // Add the following line to update IsAddEnabled after OnPropertyChanged
             IsAddEnabled = !IsUpdateEnabled;
         }
 

@@ -2,6 +2,7 @@
 using SQLiteNetExtensions.Attributes;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Both_TamasArpad_Proiect.Models
 {
@@ -10,10 +11,12 @@ namespace Both_TamasArpad_Proiect.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        [MaxLength(50)]
+        [SQLite.MaxLength(50), Required(ErrorMessage = "First name is required")]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Only letters are allowed in the first name")]
         public string FirstName { get; set; }
 
-        [MaxLength(50)]
+        [SQLite.MaxLength(50), Required(ErrorMessage = "Last name is required")]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Only letters are allowed in the last name")]
         public string LastName { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.CascadeRead)]
